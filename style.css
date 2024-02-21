@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@property --gradient-angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.card{
+    border-radius: 10px;
+    margin: 20% auto;
+    background: white;
+    height: 20rem;
+    width: 15rem;
+    position: relative;
+}
+
+.card::after,.card::before{
+    z-index: -1;
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-image: linear-gradient(var(--gradient-angle),#051937, #004d7a, #008793, #00bf72, #a8eb12);
+    animation: rotation 10s  infinite
+}
+
+.card::after{
+    filter: blur(3.5rem);
+}
+
+@keyframes rotation{
+    0%{--gradient-angle:0deg;}
+    100%{--gradient-angle:360deg;}
+}
